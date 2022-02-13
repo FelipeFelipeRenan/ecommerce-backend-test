@@ -54,7 +54,7 @@ public class ItemController {
 
 	}
 	
-    @PutMapping("/produtos/{id}")
+    @PutMapping("/items/{id}")
     public ResponseEntity<Item> updateProduto(@PathVariable(value = "id") long id, @RequestBody @Valid Item item){
         Optional<Item> itemO = repo.findById(id);
         if(!itemO.isPresent()){
