@@ -67,7 +67,7 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 		return qtd;
 	}
 
-	public void setQtd(int qtd) {
+	public void setQtd(long qtd) {
 		this.qtd = qtd;
 	}
 	
