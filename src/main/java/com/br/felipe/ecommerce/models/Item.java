@@ -28,6 +28,8 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 	
 	private String description;
 	
+	private double qtd; 
+	
 
 
 	public Item() {
@@ -64,6 +66,14 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getQtd() {
+		return qtd;
+	}
+
+	public void setQtd(double qtd) {
+		this.qtd = qtd;
 	}
 
 	
