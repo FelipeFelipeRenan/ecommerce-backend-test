@@ -3,6 +3,8 @@ package com.br.felipe.ecommerce.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -12,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.felipe.ecommerce.models.Item;
@@ -44,10 +48,22 @@ public class ItemController {
 		Optional<Item> item = repo.findById(id);
 		if(!item.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}		
+		}
+		item.get().add(linkTo(methodOn(ItemController.class).getAllItems()).withSelfRel());
 		return new ResponseEntity<Item>(item.get(), HttpStatus.OK);
 
 	}
+	
+    @PutMapping("/produtos/{id}")
+    public ResponseEntity<Item> updateProduto(@PathVariable(value = "id") long id, @RequestBody @Valid Item item){
+        Optional<Item> itemO = repo.findById(id);
+        if(!itemO.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else {
+            item.setId(itemO.get().getId());
+            return new ResponseEntity<Item>(repo.save(item), HttpStatus.OK);
+        }
+    }
 	
     @GetMapping("/error")
     public ResponseEntity<?> responseError(){
