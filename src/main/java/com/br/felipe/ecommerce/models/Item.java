@@ -15,7 +15,12 @@ import org.springframework.hateoas.RepresentationModel;
 @Table( name = "TB_item" )
 public class Item extends RepresentationModel<Item> implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
