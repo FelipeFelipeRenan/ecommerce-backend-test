@@ -25,7 +25,7 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 	
 	private String description;
 	
-	private int qtd;
+	private long qtd;
 
 	public Item() {
 
