@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,6 +64,12 @@ public class ItemController {
             item.setId(itemO.get().getId());
             return new ResponseEntity<Item>(repo.save(item), HttpStatus.OK);
         }
+    }
+    
+    @PostMapping("/produtos")
+    public ResponseEntity<Item> saveItem(@RequestBody @Valid Item item){
+        return new ResponseEntity<Item>(repo.save(item), HttpStatus.CREATED);
+
     }
 	
     @GetMapping("/error")
