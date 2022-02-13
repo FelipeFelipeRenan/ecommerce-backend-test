@@ -63,7 +63,7 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 		this.description = description;
 	}
 
-	public int getQtd() {
+	public long getQtd() {
 		return qtd;
 	}
 
