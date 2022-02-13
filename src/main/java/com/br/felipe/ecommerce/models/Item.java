@@ -14,10 +14,8 @@ import org.springframework.hateoas.RepresentationModel;
 @Entity
 @Table( name = "TB_item" )
 public class Item extends RepresentationModel<Item> implements Serializable{
-    
-    /**
-	 * 
-	 */
+
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,7 +28,7 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 	
 	private String description;
 	
-	private long qtd;
+
 
 	public Item() {
 
@@ -68,13 +66,6 @@ public class Item extends RepresentationModel<Item> implements Serializable{
 		this.description = description;
 	}
 
-	public long getQtd() {
-		return qtd;
-	}
-
-	public void setQtd(long qtd) {
-		this.qtd = qtd;
-	}
 	
 	
 	
