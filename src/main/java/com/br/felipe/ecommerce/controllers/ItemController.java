@@ -54,7 +54,16 @@ public class ItemController {
 
 	}
 	
-
+    @PutMapping("/items/{id}")
+    public ResponseEntity<Item> updateItem(@PathVariable(value = "id") long id, @RequestBody @Valid Item item){
+        Optional<Item> itemO = repo.findById(id);
+        if(!itemO.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else {
+            item.setId(itemO.get().getId());
+            return new ResponseEntity<Item>(repo.save(item), HttpStatus.OK);
+        }
+    }
 	
     @GetMapping("/error")
     public ResponseEntity<?> responseError(){
