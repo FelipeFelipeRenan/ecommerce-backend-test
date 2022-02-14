@@ -27,7 +27,7 @@ public class ItemController {
 	@Autowired
 	ItemRepository repo;
 	
-	@CrossOrigin(origins = " https://ecommerce-ferramentas.herokuapp.com/")
+	@CrossOrigin(origins = " https://ecommerce-ferramentas.herokuapp.com")
 	@GetMapping("/items")
 	public ResponseEntity<List<Item>> getAllItems(){
 		List<Item> itemlist = repo.findAll();
